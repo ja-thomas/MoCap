@@ -9,7 +9,6 @@
 #'@param sensorId character string of sensorId
 #'@author Janek
 #'@encoding UTF-8
-#'@export
 create_camera_cast_object <- function(skeleton_list, sensorId){
   camera_cast <- list()
   

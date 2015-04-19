@@ -7,7 +7,6 @@
 #'@param skeleton list of elements to create a skeleton object
 #'@author Janek
 #'@encoding UTF-8
-#'@export
 create_skeleton_object <- function(skeleton){
   
   skeleton_object <- list()

@@ -6,7 +6,6 @@
 #'(or create_camera_cast_ensemble)
 #'@author Janek
 #'@encoding UTF-8
-#'@export
 fix_timestamps <- function(ensemble){
   for(s in seq_len(length(ensemble$sensorIds))){
     missing_timestamps <- which(vapply(ensemble$casts[[s]]$data, 

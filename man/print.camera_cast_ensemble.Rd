@@ -5,10 +5,15 @@
 \alias{print.camera_cast_ensemble}
 \title{print camera cast ensemble}
 \usage{
-\method{print}{camera_cast_ensemble}(object)
+\method{print}{camera_cast_ensemble}(x, ...)
+}
+\arguments{
+\item{x}{camera_cast_ensemble object}
+
+\item{...}{further arguments passed to print}
 }
 \description{
-print camera cast ensemble
+print camera cast ensemble objects
 }
 \author{
 Janek

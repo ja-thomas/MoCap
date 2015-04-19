@@ -9,7 +9,6 @@
 #'a camera didn't register anything be added.
 #'@author Janek
 #'@encoding UTF-8
-#'@export
 create_camera_cast_ensemble_object <- function(ensemble, fix_timestamps = TRUE){
   
   camera_cast_ensemble <- list()
