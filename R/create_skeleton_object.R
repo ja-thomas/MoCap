@@ -15,7 +15,10 @@ create_skeleton_object <- function(skeleton){
   skeleton_object$sourceTrackId <- NA
   skeleton_object$timestamp <- NA
   
-  skeleton_object$joints <- data.frame(Key = 0:24, Value.Error = rep(NA, 25),
+  skeleton_object$joints <- data.frame(Key = 0:24, 
+                                       Value.Error = factor(rep(NA, 25),
+                                                    levels = c("0", "10", "99"), 
+                               labels = c("tracked", "limited", "not_tracked")),
                                        Value.position.X = rep(NA, 25),
                                        Value.position.Y = rep(NA, 25),
                                        Value.position.Z = rep(NA, 25))
@@ -33,7 +36,11 @@ create_skeleton_object <- function(skeleton){
       skeleton$RawSkeleton$Joints)), function(i) 
         unlist(skeleton$RawSkeleton$Joints[[i]]))))
     
-    skeleton_object$error <- skeleton$RawSkeleton$error 
+    skeleton_object$joints$Value.Error <- factor(
+      skeleton_object$joints$Value.Error, levels = c("0", "10", "99"), 
+             labels = c("tracked", "limited", "not_tracked"))
+    
+    skeleton_object$error <- skeleton$RawSkeleton$error
   }
   
   class(skeleton_object) <- c("skeleton")
