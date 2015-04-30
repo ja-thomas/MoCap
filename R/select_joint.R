@@ -18,7 +18,7 @@ select_joint <- function(cast, joint, include_error = FALSE){
   }
   
   do.call(rbind, lapply(cast$data, function(i)
-    cbind(i$joints[i$joints$Key == 1, selected], timestamp = i$timestamp)))
+    cbind(i$joints[i$joints$Key == joint, selected], timestamp = i$timestamp)))
 }
 
 
