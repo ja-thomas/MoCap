@@ -2,7 +2,9 @@
 
 S3method(print,camera_cast)
 S3method(print,camera_cast_ensemble)
+export(create_deviation_data)
 export(read_motion_data)
 export(select_joint)
 export(select_sensor)
+import(data.table)
 import(rjson)
