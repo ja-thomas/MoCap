@@ -20,15 +20,16 @@ create_deviation_data <- function(joint ,joint_positions, optitrack_positions,
   
   data <- data.table(merge(joints, optitrack, by = "timestamp"))
   
-  distance <- sqrt((data$Value.position.X.x - data$Value.position.X.y)^2 + 
-    (data$Value.position.Y.x - data$Value.position.Y.y)^2 +
-    (data$Value.position.Z.x - data$Value.position.Z.y)^2)
+  deviation_x <- data$Value.position.X.x - data$Value.position.X.y
+  deviation_y <- data$Value.position.Y.x - data$Value.position.Y.y
+  deviation_z <- data$Value.position.Z.x - data$Value.position.Z.y
+  
+  deviation <- sqrt(deviation_x^2 + deviation_y^2 + deviation_z^2)
     
-  data.table(distance, joint_Nr = joint, timestamp = data$timestamp, person, 
-              course, kinect_error = data$Value.Error, 
-             x = data$Value.position.X.x, y = data$Value.position.Y.x,
-             z = data$Value.position.Z.x, key = c("joint_Nr", "timestamp", 
-                                                  "person", "course"))
+  data.table(deviation, deviation_x, deviation_y, deviation_z, 
+             timestamp = data$timestamp, joint_Nr = joint,
+             sensorId = joint_positions$sensorId, person, course, 
+             key = c("joint_Nr", "timestamp", "person", "course", "sensorId"))
   
 }
 
